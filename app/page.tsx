@@ -3,14 +3,13 @@ export default function Home() {
 }
 
 // TODO
-// [] Redirect
 // [] Deploy
-// [] Linting
 // [] Test
+// [] Custom 404 page
 // [] SEO
-// [] Readme
 // [] Meta tags
 // [] Add a favicon
 // [] Add a title
 // [] Add a description
 // [] Add a preview image
+// [] Readme

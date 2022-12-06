@@ -4,6 +4,7 @@ export default function Home() {
 
 // TODO
 // [] Types
+// [] Redirect
 // [] Deploy
 // [] Linting
 // [] Test

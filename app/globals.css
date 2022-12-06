@@ -18,3 +18,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+body {
+  color: white;
+  background-color: hsl(240, 67%, 8%);
+  background-image: url(/background-stars.svg);
+}

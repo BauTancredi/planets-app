@@ -1,3 +1,16 @@
 export default function Home() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return null;
 }
+
+// TODO
+// [] Types
+// [] Deploy
+// [] Linting
+// [] Test
+// [] SEO
+// [] Readme
+// [] Meta tags
+// [] Add a favicon
+// [] Add a title
+// [] Add a description
+// [] Add a preview image

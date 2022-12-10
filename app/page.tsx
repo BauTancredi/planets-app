@@ -3,8 +3,6 @@ export default function Home() {
 }
 
 // TODO
-// [] Deploy
-// [] Test
 // [] Custom 404 page
 // [] SEO
 // [] Meta tags

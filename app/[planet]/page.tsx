@@ -32,11 +32,11 @@ const ButtonList = ({ activeTab, setActiveTab, planetColor }) => {
           key={option.id}
           className={`${activeTab === option.id
               ? planetColor
-              : "bg-transparent border border-gray-600 hover:scale-105"
-            } w-full h-12 mt-4 text-left transition-all`}
+              : "bg-transparent border border-gray-600 hover:scale-105 hover:bg-gray-600"
+            } w-80 h-12 mt-4 text-left transition-all lg:w-[350px] tracking-widest`}
           onClick={() => setActiveTab(option.id)}
         >
-          <span className="px-6"> {option.span} </span>
+          <span className="px-6 text-gray-300"> {option.span} </span>
           {option.label}
         </button>
       ))}
@@ -46,9 +46,14 @@ const ButtonList = ({ activeTab, setActiveTab, planetColor }) => {
 
 const PlanetStats = ({ planet }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-12">
+    <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-6 lg:mt-12">
       {Object.entries(planet).map((entry) => (
-        <div className="border border-gray-600 p-6">
+        // change display at md breakpoint
+        <div
+          key={entry[0]}
+          className="flex justify-between items-center border border-gray-600 p-6 md:flex-col  md:items-start md:justify-start"
+        >
+          {/* <div className="border border-gray-600 p-6 md:flex md:justify-center md:items-center"> */}
           <p className="text-gray-400 text-sm tracking-widest">{entry[0].toUpperCase()}</p>
           <h3 className="text-4xl">{entry[1].toUpperCase()}</h3>
         </div>
@@ -112,7 +117,7 @@ const PlanetPage = ({ params }: { params: { planet: string } }) => {
 
   return (
     <div className="">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="flex justify-center items-center relative">
           <Image
             alt={planet.name}
@@ -131,11 +136,11 @@ const PlanetPage = ({ params }: { params: { planet: string } }) => {
             />
           )}
         </div>
-        <div className="w-full flex justify-end">
-          <article className="text-left w-[350px]">
+        <div className="items-center text-center md:flex gap-10 lg:gap-0 lg:flex-col my-4 lg:my-0">
+          <article className="lg:w-[350px] md:text-left lg:self-end">
             <h1 className="text-6xl font-bold">{planet.name.toUpperCase()}</h1>
-            <p className="text-md my-4 text-gray-300 h-36">{renderContent()}</p>
-            <div className="flex items-center text-gray-400">
+            <p className="text-md my-4 text-gray-300 md:h-36">{renderContent()}</p>
+            <div className="flex items-center text-gray-400 justify-center md:justify-start">
               <p className="text-sm mr-2">
                 Source: &nbsp;
                 <a
@@ -155,12 +160,14 @@ const PlanetPage = ({ params }: { params: { planet: string } }) => {
                 width={10}
               />
             </div>
+          </article>
+          <div className="hidden md:block lg:text-end">
             <ButtonList
               activeTab={activeTab}
               planetColor={planetColor}
               setActiveTab={setActiveTab}
             />
-          </article>
+          </div>
         </div>
       </div>
       <PlanetStats

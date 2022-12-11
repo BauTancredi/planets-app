@@ -3,11 +3,12 @@ export default function Home() {
 }
 
 // TODO
-// [] Custom 404 page
-// [] SEO
+// [] Eslint
+// [] Refactor
+// [] Animations
+// [] Footer
+// [] Buttons in mobile
+// [] Header
+// [] Performance
 // [] Meta tags
-// [] Add a favicon
-// [] Add a title
-// [] Add a description
-// [] Add a preview image
 // [] Readme

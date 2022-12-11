@@ -3,12 +3,11 @@ export default function Home() {
 }
 
 // TODO
-// [] Eslint
 // [] Refactor
 // [] Animations
-// [] Footer
 // [] Buttons in mobile
 // [] Header
+// [] Eslint
 // [] Performance
 // [] Meta tags
 // [] Readme

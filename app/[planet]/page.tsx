@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 import planets from "../../data/planets.json";
 import selectPlanetColor from "../../utils/selectPlanetColor";
@@ -55,49 +56,65 @@ const PlanetPage = ({ params }: { params: { planet: PlanetString } }) => {
   return (
     <div className="">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="flex justify-center items-center relative">
-          <Image
-            alt={planet.name}
-            className="h-[300px] w-[300px]"
-            height={100}
-            src={handlePlanetImage()}
-            width={100}
-          />
-          {activeTab === "surface" && (
+        <AnimatePresence>
+          <motion.div
+            animate={{ opacity: 1, y: 0 }}
+            className="flex justify-center items-center relative"
+            initial={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.5 }}
+          >
             <Image
+              priority
               alt={planet.name}
-              className="h-[150] w-[100px] absolute bottom-0 right"
+              className="h-[300px] w-[300px]"
               height={100}
-              src={planet.images.geology}
+              src={handlePlanetImage()}
               width={100}
             />
-          )}
-        </div>
-        <div className="items-center text-center md:flex gap-10 lg:gap-0 lg:flex-col my-4 lg:my-0">
-          <article className="lg:w-[350px] md:text-left lg:self-end">
-            <h1 className="text-6xl font-bold">{planet.name.toUpperCase()}</h1>
-            <p className="text-md my-4 text-gray-300 md:h-36">{renderContent()}</p>
-            <div className="flex items-center text-gray-400 justify-center md:justify-start">
-              <p className="text-sm mr-2">
-                Source: &nbsp;
-                <a
-                  className="underline font-bold"
-                  href={handlePlanetSource()}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Wikipedia
-                </a>
-              </p>
+            {activeTab === "surface" && (
               <Image
-                alt="Wikipedia"
-                className="mt-1"
-                height={10}
-                src="/icon-source.svg"
-                width={10}
+                priority
+                alt={planet.name}
+                className="h-[150] w-[100px] absolute bottom-0 right"
+                height={100}
+                src={planet.images.geology}
+                width={100}
               />
-            </div>
-          </article>
+            )}
+          </motion.div>
+        </AnimatePresence>
+        <div className="items-center text-center md:flex gap-10 lg:gap-0 lg:flex-col my-4 lg:my-0">
+          <AnimatePresence>
+            <motion.article
+              animate={{ opacity: 1, y: 0 }}
+              className="lg:w-[350px] md:text-left lg:self-end"
+              initial={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h1 className="text-6xl font-bold">{planet.name.toUpperCase()}</h1>
+              <p className="text-md my-4 text-gray-300 md:h-36">{renderContent()}</p>
+              <div className="flex items-center text-gray-400 justify-center md:justify-start">
+                <p className="text-sm mr-2">
+                  Source: &nbsp;
+                  <a
+                    className="underline font-bold"
+                    href={handlePlanetSource()}
+                    rel="noreferrer"
+                    target="_blank"
+                  >
+                    Wikipedia
+                  </a>
+                </p>
+                <Image
+                  alt="Wikipedia"
+                  className="mt-1"
+                  height={10}
+                  src="/icon-source.svg"
+                  width={10}
+                />
+              </div>
+            </motion.article>
+          </AnimatePresence>
           <div className="hidden md:block lg:text-end">
             <ButtonList
               activeTab={activeTab}

@@ -3,11 +3,8 @@ export default function Home() {
 }
 
 // TODO
-// [] Refactor
 // [] Animations
 // [] Buttons in mobile
 // [] Header
-// [] Eslint
-// [] Performance
 // [] Meta tags
 // [] Readme
